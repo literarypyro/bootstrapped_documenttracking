@@ -17,8 +17,8 @@ function addNewRouting($db,$referenceNumber,$date,$office,$officerMark){
 	$alter_officer=$officerMark[1];
 	$alter_position=$officerMark[2];
 	
-	$sql="insert into document_routing(reference_no,from_name,request_date,from_office,alter_from,alter_position,input_time) values
-	('".$referenceNumber."','".$officer."','".$date."','".$office."','".$alter_officer."','".$alter_position."','".date("Y-m-d H:i")."')";
+	$sql="insert into document_routing(reference_no,from_name,request_date,from_office,alter_from,alter_position,input_time,synced) values
+	('".$referenceNumber."','".$officer."','".$date."','".$office."','".$alter_officer."','".$alter_position."','".date("Y-m-d H:i")."','false')";
 	$rs=$db->query($sql);
 		
 	$routingId=$db->insert_id;

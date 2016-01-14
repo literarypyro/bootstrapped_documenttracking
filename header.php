@@ -16,12 +16,14 @@
     <![endif]-->
 
     <!-- Bootstrap core CSS -->
-	
     <link href="css/bootstrap_banzhow.css" rel="stylesheet">
-
+	<!--	
+    <link href="css/banzhow_nav.css" rel="stylesheet">
+	-->
     <!-- custom CSS -->
-    <link href="css/style.css" rel="stylesheet">
     
+	<link href="css/style.css" rel="stylesheet">
+  
 	<!--[if lte IE 8]>
     <link href="css/ie8.css" rel="stylesheet">
     <![endif]-->
@@ -32,8 +34,9 @@
     <!-- JavaScript -->
 	
     <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+	<!--
 	<script type="text/javascript" src="js/bootstrap.js"></script>
-    
+    -->
 	<script type="text/javascript" src="js/plugins.js"></script>
     <!--[if lte IE 7]>
     <script type="text/javascript" src="js/boxsizing/jquery.boxsizing.js"></script> 

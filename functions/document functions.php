@@ -1,13 +1,14 @@
 <?php
 function updateDocumentStatus($setDb,$status,$ref_id){
-	$update2="update document set status='".$status."' where (ref_id*1)='".($ref_id*1)."'";
+	$update2="update document set status='".$status."',synced='false' where (ref_id*1)='".($ref_id*1)."'";
 	$update=$setDb->query($update2);	
 }
 
 function createNewDocument($db,$class,$office,$details){
 	//$insYear=date("Y");
-	$sql="insert into document (classification_id,subject,document_date,document_type,originating_office,originating_name,status,receive_date,sending_office,security,chronId) values 
-	('".$class."',\"".$details[0]."\",\"".$details[1]."\",\"".$details[2]."\",\"".$office."\",'".$details[3]."','FOR: UPLOAD','".$details[4]."','".$details[5]."','".$details[6]."','".$details[7]."')";
+	$sql="insert into document (classification_id,subject,document_date,document_type,originating_office,originating_name,status,receive_date,sending_office,security,chronId,synced) values 
+	('".$class."',\"".$details[0]."\",\"".$details[1]."\",\"".$details[2]."\",\"".$office."\",'".$details[3]."','FOR: UPLOAD','".$details[4]."','".$details[5]."','".$details[6]."','".$details[7]."','false')";
+	
 	$rs=$db->query($sql);
 	$documentId=$db->insert_id;
 	return $documentId;

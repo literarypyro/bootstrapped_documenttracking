@@ -18,6 +18,7 @@ if(isset($_POST['username'])){
 			$_SESSION['username']=$_POST['username'];
 			$_SESSION['name']=$row['firstName']." ".$row['lastName'];
 			$_SESSION['passcode']=$_POST['password'];
+			$_SESSION['formcode']=$_POST['password'];
 			
 			$sql2="select * from department where department_code='".$row['deptCode']."'";
 			$rs2=$db2->query($sql2);
@@ -81,7 +82,7 @@ if(isset($_POST['username'])){
 
             <div class="registration">
                 Not a member yet?
-                <a class="" href="registration.html">
+                <a class="" href="registration.php">
                     Signup
                 </a>
             </div>

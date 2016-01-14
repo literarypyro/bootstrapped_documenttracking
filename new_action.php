@@ -8,16 +8,10 @@ require("functions/general functions.php");
 require("functions/routing process.php");
 require("functions/user functions.php");
 require("functions/form functions.php");
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-
-
-
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <meta name="description" content="">
@@ -25,10 +19,9 @@ require("functions/form functions.php");
   <link rel="shortcut icon" href="#" type="image/png">
 
   <title>Document Tracking System - Create a Document</title>
-
-  <!--
+	<!--
     <link href="css/font-awesome.min.css" rel="stylesheet">
-		-->
+	-->
 	<link href="css/jquery.stepy.css" rel="stylesheet">
 	
 	<link href="css/bootstrap_banzhow.css" rel="stylesheet">
@@ -114,7 +107,10 @@ require("functions/form functions.php");
         <div class="page-heading">
             <h3>
                 Create A New Document <small>date pickers, datetime pickers, time pickers and color pickers</small>
-            </h3>
+            
+				
+			
+			</h3>
             <ul class="breadcrumb">
                 <li>
                     <a href="#">New Action</a>
@@ -285,7 +281,7 @@ require("functions/form functions.php");
 												</div>
                                             </div>
 										</fieldset>
-                                        <fieldset title="Step 2">
+										<fieldset title="Step 2">
                                             <legend>Provide Routing Details</legend>
                                             <?php 
 											$db=connectDb();
@@ -379,7 +375,6 @@ require("functions/form functions.php");
 																</tr>	
 																
 																<?php
-																
 															}
 															?>
 															</table>
@@ -391,53 +386,35 @@ require("functions/form functions.php");
 															-->
 
 
-															  <button type="button" data-dismiss="modal" class="btn btn-primary">Save changes</button>
+															<button type="button" data-dismiss="modal" class="btn btn-primary">Save changes</button>
 															</div>
 															</div><!-- /.modal-content -->
-														</div><!-- /.modal-dialog -->
-													  </div><!-- /.modal -->
-
-
-
-
-
-
-
-
-
-
-
-
-													
-
-												   <table id='destination_table' class="display table table-bordered table-striped" name='destination_table'>
+															</div><!-- /.modal-dialog -->
+														</div><!-- /.modal -->
+	
+													<table id='destination_table' class="display table table-bordered table-striped" name='destination_table'>
 														<tr>
 															<th>Division/Unit</th>
 															<th>Officer Name</th>
 															<th>Action</th>								
 														</tr>
 													</table>
-                                                </div>
-										   </div>
+												</div>
+											</div>
                                             <div class="form-group" style='display:none'>
 												<input type='text' name='target_list' id='target_list' />
-
-
-										   </div>
-											
+											</div>
+										</fieldset>
+										<fieldset title="Step 3">
+											<legend>Verify Password to Submit</legend>
+											<div class="form-group">
+												<label class="col-md-2 col-sm-2 control-label">Enter Your User Password to Submit</label>
+												<div class="col-md-6 col-sm-6">
+												<input class='form-control' type=password id='passcode' name='passcode' onkeyup='verifyPassCode(this)' /><span id='passcode_verify' name='passcode_verify' data-passcode='<?php echo $_SESSION['formcode']; ?>'></span>
+												</div>
+											</div>
                                         </fieldset>
-                                        <fieldset title="Step 3">
-                                            <legend>Verify Password to Submit</legend>
-                                            <div class="form-group">
-
-
-											<label class="col-md-2 col-sm-2 control-label">Enter Your User Password to Submit</label>
-                                                <div class="col-md-6 col-sm-6">
-												<input class='form-control' type=password id='passcode' name='passcode' onkeyup='verifyPassCode(this)' /><span id='passcode_verify' name='passcode_verify' data-passcode='<?php echo $_SESSION['passcode']; ?>'></span>
-                                                </div>
-                                            </div>
-                                        </fieldset>
-                                        <button type="submit" id='fin_button' name='fin_button' class="finish btn btn-info btn-extend" disabled> Finish!</button>
+                                        <button type="submit" id='fin_button' name='fin_button' class="finish btn btn-info btn-extend"> Finish!</button>
                                     </form>
                                 </div>
                             </div>
@@ -468,8 +445,8 @@ require("functions/form functions.php");
 </section>
 </div>
 <!-- Placed js at the end of the document so the pages load faster -->
-
-
+	
+	
 <script src="js/jquery-1.10.2.min.js"></script>
 <script src="js/jquery-ui-1.9.2.custom.min.js"></script>
 <script src="js/jquery-migrate-1.2.1.min.js"></script>
@@ -486,16 +463,16 @@ require("functions/form functions.php");
 <script type="text/javascript" src="js/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
 <script src="js/jquery.validate.min.js"></script>
 <script src="js/jquery.stepy.js"></script>
-
-
+	
+	
 <script src="js/bootstrap-modal.js"></script>
 <script src="js/bootstrap-modalmanager.js"></script>
-
+	
 <!--pickers initialization-->
 <script src="js/pickers-init.js"></script>
 <script type="text/javascript" src="js/bootstrap-fileupload.min.js"></script>
-
-
+	
+	
 <!--common scripts for all pages-->
 <script src="js/scripts.js"></script>
 <script>
@@ -598,8 +575,6 @@ function processChange(officer){
 		//$('#alterPosition').val($(this).find("option:selected").data('position'));
 
 		$("#tag_officer_stn_"+$(officer).find("option:selected").data('row-division')).html($(officer).find("option:selected").data('name'));
-
-
 }
 
 function updateDestinationCount(){
@@ -611,19 +586,17 @@ function updateDestinationCount(){
 		$('#target_list').val(destination_count);
 	
 	}
-
-
 }
 
 function verifyPassCode(passElement){
+	/*
 	if(passElement==$('#passcode_verify').data('passcode')){
 		$('#fin_button').prop('disabled','false');
 	}
 	else {
 		$('#fin_button').prop('disabled','true');
 	}
-
-
+	*/
 }
 </script>
 </body>

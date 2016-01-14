@@ -88,6 +88,7 @@ require("functions/user functions.php");
         -->
 
         <a class="toggle-btn"><i class="fa fa-bars"></i></a>
+		<?php require("notification menu.php"); ?>
 
         <!--notification menu end -->
 
@@ -139,7 +140,7 @@ require("functions/user functions.php");
 			<?php
 			$db=connectDb();
 			$sql="select * from forward_copy where document_type in ('MEMO','IN') and to_department='".$_SESSION['division_code']."' order by forward_date desc";
-
+			
 			$rs=$db->query($sql);
 			$nm=$rs->num_rows;	
 	
@@ -156,7 +157,7 @@ require("functions/user functions.php");
 			<td><?php echo $documentRow['document_date']; ?></td>
 			<td><a href='document_history.php?view=<?php echo getDocumentId($db,$row3['reference_number']); ?>'><?php echo $documentRow['subject']; ?></a></td>
 			<td><?php echo $row3['reference_number']; ?></td>
-			<td><a href='forward report.php?forId=<?php echo $row3['id']; ?>'>[Link]</a></td>
+			<td><a href='forward report.php?forId=<?php echo $row3['id']; ?>'><i class='fa fa-external-link'></i></a></td>
 			</tr>
 			<?php
 			}
